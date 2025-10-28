@@ -1,0 +1,24 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body{
+background-color:#FA9837;
+font-family: "Cinzel", serif;
+}
+main{
+    background-color:#F7C15E;
+    width:80vw;
+    text-align: center;
+    margin-top: 40px;
+    margin-right: auto;
+    margin-bottom: 40px;
+    margin-left: auto;
+    /*shorthand */
+    margin: 40px auto;
+    margin: 40px auto 40px auto;
+    border: 2px solid #FA7D00;
+    border-radius: 10px
+}
