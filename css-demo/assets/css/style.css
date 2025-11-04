@@ -41,8 +41,7 @@ div.hgroup{
 header.primary nav{
 width: 30%
 }
-    flex-grow: 1;
-    text-align: left;
+
 div.hgroup h1 a{
   color:#260101;
   text-decoration:none;
