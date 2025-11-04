@@ -5,11 +5,12 @@ html {
   box-sizing: inherit;
 }
 body{
-background-color:#FA9837;
-font-family: "Cinzel", serif;
+background-color:#593A1E;
+  font-family: "Merriweather", serif;
+  font-optical-sizing: auto;
 }
 main{
-    background-color:#F7C15E;
+    background-color:#F2E9D8;
     width:80vw;
     text-align: center;
     margin-top: 40px;
@@ -19,18 +20,19 @@ main{
     /*shorthand */
     margin: 40px auto;
     margin: 40px auto 40px auto;
-    border: 2px solid #FA7D00;
+    border: 3px solid#260101;
     border-radius: 10px
 }
 header.primary{
-background-color:#FA7D00;
+background-color:#593F2F;
 padding: 20px;
-background-image: url("../img/202656822_969a42a0-a1b6-49ca-901a-f5a0afab071d.jpg"); 
+background-image: url("../img/nature-2616486_1280.jpg"); 
 background-repeat:no-repeat; 
 background-size:cover;
 background-position:center;
-border:3px solid #0ABFBF;
+border:3px solid #260101;
 display: flex;
+justify-content:space-between;  
 }
 div.hgroup{
   width: 70%;
@@ -42,13 +44,13 @@ width: 30%
     flex-grow: 1;
     text-align: left;
 div.hgroup h1 a{
-    color: #FFFFFF;
-    text-decoration: none;
-    font-size:2.5rem;
+  color:#260101;
+  text-decoration:none;
+  font-size:2.5rem;
   text-shadow: 2px 2px #000;
 }
 
 div.hgroup h2{
-color:#ffffff;
+color:#D9D2AD;
 text-shadow: 2px 2px #000;  
 }
