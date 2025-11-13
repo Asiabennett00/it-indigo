@@ -4,6 +4,11 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+/* ------------  Responsive Image -----------------*/
+img{
+  max-width:100%;
+}
+
 /* ------------  Utlity Classes -----------------*/
 
 .container{
@@ -89,9 +94,58 @@ text-shadow: 2px 2px #260101;
 #content{
 line-height:1.6;
 }
-#content h2,#content h3{
+#content h2,#content h3, .widget header h2{
   color:#593A1E;
   border-left:7.5px solid #260101;
   border-radius:15px 0;
   padding:5px 7.5px 0 5px;
+}
+#blog{
+  background-color: #593F2F;
+  padding:20px 0;
+  border-top:6px double #260101;
+  border-bottom:6px double #260101;
+}
+#blog > h2{
+  color:#D9D2AD;
+  text-shadow: 1px 1px #000;
+  margin-left:20px;
+}
+#blog .post {
+  display: grid; 
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas: 
+    "figure header"
+    "figure post-content"
+    "figure footer";
+  margin: 20px;
+  padding: 20px;
+  background: #fff;
+}
+
+.post figure{
+  grid-area: figure;
+  margin:0 20px 0 0;
+}
+.post header{
+  grid-area: header;
+}
+.post .post-content{
+  grid-area: post-content;
+}
+.post .post-meta{
+  grid-area: footer;
+}
+aside .container{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap:40px;
+}
+#colophon{
+ background-image: url("../img/nature-2616486_1280.jpg"); 
+background-repeat:no-repeat; 
+background-size:cover;
+padding:1px;
+text-align: center;
+color:#fff;
 }
