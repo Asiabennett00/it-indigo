@@ -1,18 +1,47 @@
 <!DOCTYPE html>
-<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>New Patient Registration</title>
+</head>
 <body>
 
-<h2>HTML Forms</h2>
+<h2>New Patient Registration</h2>
+<h4>Please fill out the form below</h4>
 
-<form action="/action_page.php">
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname" value="John"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname" value="Doe"><br><br>
-  <input type="submit" value="Submit">
+<form action="https://brucebauer.info/assets/ITEC3650/datadump.php">
+  <label for="fname">First name:</label>
+  <input type="text" id="fname" name="fname" value="" size="30" maxlength="30"><br><br>
+  <label for="ml">Middle Initial:</label>
+  <input type="text" id="ml" name="ml" value="" size="1" maxlength="1"><br><br>
+  <label for="lname">Last name:</label>
+  <input type="text" id="lname" name="lname" value="" size="30" maxlength="30"><br><br>
+  <label for="email">Email:</label>
+  <input type="text" id="email" name="email" value="" size="30" maxlength="30"><br>
+<div class="row">
+<div class="col">
+<label>Sex:</label>
+<div class="inline">
+<label><input type="radio" name="Sex" value="M"> Male</label>
+<label><input type="radio" name="Sex" value="F"> Female</label>
+<label><input type="radio" name="Sex" value="N"> N/A</label><br>
+  <br><label for="birthday">Birthday:</label>
+  <input type="text" id="birthday" name="birthday" value="" size="8" maxlength="8"><br><br>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+  <input type="submit" value="Submit Patient Form">
 </form> 
 
-<p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+<p>If you click the "Submit" button, the form-data will be sent to a page called "https://brucebauer.info/assets/ITEC3650/datadump.php".</p>
 
 </body>
 </html>
