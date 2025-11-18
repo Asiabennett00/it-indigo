@@ -149,3 +149,12 @@ padding:1px;
 text-align: center;
 color:#fff;
 }
+.fade-in {
+  animation: fadeIn 1.2s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

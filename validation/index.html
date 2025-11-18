@@ -1,47 +1,305 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>New Patient Registration</title>
+<style>
+ body {
+ font-family: Arial, sans-serif;
+ margin: 20px;
+ padding: 20px;
+ }
+ .formlabel {
+ display: inline-block;
+ width: 180px;
+ font-weight: bold;
+ }
+ .error-message {
+ color: red;
+ font-size: 0.85em;
+ font-style: italic;
+ display: none;
+ margin-left: 10px;
+ }
+ .error-message.show {
+ display: inline;
+ }
+ input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], select, textarea {
+ padding: 5px;
+ margin: 5px 0;
+ }
+ .inline {
+ display: inline-block;
+ }
+ input[type="submit"] {
+ background-color: #4CAF50;
+ color: white;
+ padding: 12px 20px;
+ border: none;
+ cursor: pointer;
+ font-size: 16px;
+ margin-top: 20px;
+ }
+ input[type="submit"]:hover {
+ background-color: #45a049;
+ }
+</style>
 </head>
 <body>
 
 <h2>New Patient Registration</h2>
 <h4>Please fill out the form below</h4>
 
-<form action="https://brucebauer.info/assets/ITEC3650/datadump.php">
-  <label for="fname">First name:</label>
-  <input type="text" id="fname" name="fname" value="" size="30" maxlength="30"><br><br>
-  <label for="ml">Middle Initial:</label>
-  <input type="text" id="ml" name="ml" value="" size="1" maxlength="1"><br><br>
-  <label for="lname">Last name:</label>
-  <input type="text" id="lname" name="lname" value="" size="30" maxlength="30"><br><br>
-  <label for="email">Email:</label>
-  <input type="text" id="email" name="email" value="" size="30" maxlength="30"><br>
-<div class="row">
-<div class="col">
-<label>Sex:</label>
-<div class="inline">
-<label><input type="radio" name="Sex" value="M"> Male</label>
-<label><input type="radio" name="Sex" value="F"> Female</label>
-<label><input type="radio" name="Sex" value="N"> N/A</label><br>
-  <br><label for="birthday">Birthday:</label>
-  <input type="text" id="birthday" name="birthday" value="" size="8" maxlength="8"><br><br>
-</div>
-</div>
+<form id="patientForm" action="https://brucebauer.info/assets/ITEC3650/datadump.php" method="post">
+ <label for="fname" class="formlabel">First name:</label>
+ <input type="text" id="fname" name="fname" value="" size="30" maxlength="30">
+ <span class="error-message" id="fname-error">This is Required</span>
+ <br><br>
 
+ <label for="ml" class="formlabel">Middle Initial:</label>
+ <input type="text" id="ml" name="ml" value="" size="1" maxlength="1"><br><br>
 
+ <label for="lname" class="formlabel">Last name:</label>
+ <input type="text" id="lname" name="lname" value="" size="30" maxlength="30">
+ <span class="error-message" id="lname-error">This is Required</span>
+ <br><br>
 
+ <label for="email" class="formlabel">Email:</label>
+ <input type="email" id="email" name="email" value="" size="30" maxlength="50">
+ <span class="error-message" id="email-error">This is Required</span>
+ <br><br>
 
+ <label class="formlabel">Sex:</label>
+ <div class="inline">
+ <label><input type="radio" name="Sex" value="M"> Male</label>
+ <label><input type="radio" name="Sex" value="F"> Female</label>
+ <label><input type="radio" name="Sex" value="N"> N/A</label>
+ </div>
+ <span class="error-message" id="sex-error">This is Required</span>
+ <br><br>
 
+ <label for="birthday" class="formlabel">Birthday:</label>
+ <input type="date" id="birthday" name="birthday" value="">
+ <span class="error-message" id="birthday-error">This is Required</span>
+ <br><br>
 
+ <label for="height" class="formlabel">Height (inches):</label>
+ <input type="number" id="height" name="height" value="" min="1" max="100">
+ <span class="error-message" id="height-error">This is Required</span>
+ <br><br>
 
+ <label for="weight" class="formlabel">Weight (pounds):</label>
+ <input type="number" id="weight" name="weight" value="" min="1" max="999">
+ <span class="error-message" id="weight-error">This is Required</span>
+ <br><br>
 
+ <label for="pn" class="formlabel">Phone Number:</label>
+ <input type="tel" id="pn" name="pn" value="" size="14" maxlength="14">
+ <span class="error-message" id="pn-error">This is Required</span>
+ <br><br>
 
-  <input type="submit" value="Submit Patient Form">
-</form> 
+ <label for="MaritalStatus" class="formlabel">Marital Status:</label>
+ <select id="MaritalStatus" name="MaritalStatus">
+ <option value="">Please choose…</option>
+ <option value="S">Single</option>
+ <option value="M">Married</option>
+ <option value="D">Divorced</option>
+ <option value="L">Legally Separated</option>
+ <option value="W">Widowed</option>
+ </select>
+ <span class="error-message" id="marital-error">This is Required</span>
+ <br><br>
+
+ <label for="Address" class="formlabel">Address:</label>
+ <input type="text" id="Address" name="Address" size="50">
+ <span class="error-message" id="address-error">This is Required</span>
+ <br><br>
+
+ <label for="City" class="formlabel">City:</label>
+ <input type="text" id="City" name="City" size="30" maxlength="30">
+ <span class="error-message" id="city-error">This is Required</span>
+ <br><br>
+
+ <label for="State" class="formlabel">State:</label>
+ <select id="State" name="State">
+ <option value="">Select State…</option>
+ <option value="AL">Alabama</option>
+ <option value="AK">Alaska</option>
+ <option value="AZ">Arizona</option>
+ <option value="AR">Arkansas</option>
+ <option value="CA">California</option>
+ <option value="CO">Colorado</option>
+ <option value="CT">Connecticut</option>
+ <option value="DE">Delaware</option>
+ <option value="FL">Florida</option>
+ <option value="GA">Georgia</option>
+ <option value="HI">Hawaii</option>
+ <option value="ID">Idaho</option>
+ <option value="IL">Illinois</option>
+ <option value="IN">Indiana</option>
+ <option value="IA">Iowa</option>
+ <option value="KS">Kansas</option>
+ <option value="KY">Kentucky</option>
+ <option value="LA">Louisiana</option>
+ <option value="ME">Maine</option>
+ <option value="MD">Maryland</option>
+ <option value="MA">Massachusetts</option>
+ <option value="MI">Michigan</option>
+ <option value="MN">Minnesota</option>
+ <option value="MS">Mississippi</option>
+ <option value="MO">Missouri</option>
+ <option value="MT">Montana</option>
+ <option value="NE">Nebraska</option>
+ <option value="NV">Nevada</option>
+ <option value="NH">New Hampshire</option>
+ <option value="NJ">New Jersey</option>
+ <option value="NM">New Mexico</option>
+ <option value="NY">New York</option>
+ <option value="NC">North Carolina</option>
+ <option value="ND">North Dakota</option>
+ <option value="OH">Ohio</option>
+ <option value="OK">Oklahoma</option>
+ <option value="OR">Oregon</option>
+ <option value="PA">Pennsylvania</option>
+ <option value="RI">Rhode Island</option>
+ <option value="SC">South Carolina</option>
+ <option value="SD">South Dakota</option>
+ <option value="TN">Tennessee</option>
+ <option value="TX">Texas</option>
+ <option value="UT">Utah</option>
+ <option value="VT">Vermont</option>
+ <option value="VA">Virginia</option>
+ <option value="WA">Washington</option>
+ <option value="WV">West Virginia</option>
+ <option value="WI">Wisconsin</option>
+ <option value="WY">Wyoming</option>
+ </select>
+ <span class="error-message" id="state-error">This is Required</span>
+ <br><br>
+
+ <label for="Zip" class="formlabel">Zip Code:</label>
+ <input type="text" id="Zip" name="Zip" size="5" maxlength="5" pattern="[0-9]{5}">
+ <span class="error-message" id="zip-error">This is Required</span>
+ <br><br>
+
+ <label class="formlabel">Taking Medications:</label>
+ <label class="inline">
+ <input type="radio" name="Medications" value="Y"> Yes
+ </label>
+ <label class="inline">
+ <input type="radio" name="Medications" value="N"> No
+ </label>
+ <span class="error-message" id="medications-error">This is Required</span>
+ <br><br>
+
+ <label for="MedicationsList" class="formlabel">If yes, list medications:</label><br>
+ <textarea id="MedicationsList" name="MedicationsList" rows="3" cols="50"></textarea>
+ <br><br>
+
+ <input type="submit" value="Submit Patient Form">
+</form>
 
 <p>If you click the "Submit" button, the form-data will be sent to a page called "https://brucebauer.info/assets/ITEC3650/datadump.php".</p>
+
+<script>
+document.getElementById('patientForm').addEventListener('submit', function(e) {
+ // Clear all previous error messages
+ const errorMessages = document.querySelectorAll('.error-message');
+ errorMessages.forEach(msg => msg.classList.remove('show'));
+
+ let hasErrors = false;
+
+ // Validate First Name
+ if (document.getElementById('fname').value.trim() === '') {
+ document.getElementById('fname-error').classList.add('show');
+ hasErrors = true;
+ }
+
+ // Validate Last Name
+ if (document.getElementById('lname').value.trim() === '') {
+ document.getElementById('lname-error').classList.add('show');
+ hasErrors = true;
+ }
+
+ // Validate Email
+ if (document.getElementById('email').value.trim() === '') {
+ document.getElementById('email-error').classList.add('show');
+ hasErrors = true;
+ }
+
+ // Validate Sex
+ if (!document.querySelector('input[name="Sex"]:checked')) {
+ document.getElementById('sex-error').classList.add('show');
+ hasErrors = true;
+ }
+
+ // Validate Birthday
+ if (document.getElementById('birthday').value === '') {
+ document.getElementById('birthday-error').classList.add('show');
+ hasErrors = true;
+ }
+
+ // Validate Height
+ if (document.getElementById('height').value === '') {
+ document.getElementById('height-error').classList.add('show');
+ hasErrors = true;
+ }
+
+ // Validate Weight
+ if (document.getElementById('weight').value === '') {
+ document.getElementById('weight-error').classList.add('show');
+ hasErrors = true;
+ }
+
+ // Validate Phone Number
+ if (document.getElementById('pn').value.trim() === '') {
+ document.getElementById('pn-error').classList.add('show');
+ hasErrors = true;
+ }
+
+ // Validate Marital Status
+ if (document.getElementById('MaritalStatus').value === '') {
+ document.getElementById('marital-error').classList.add('show');
+ hasErrors = true;
+ }
+
+ // Validate Address
+ if (document.getElementById('Address').value.trim() === '') {
+ document.getElementById('address-error').classList.add('show');
+ hasErrors = true;
+ }
+
+ // Validate City
+ if (document.getElementById('City').value.trim() === '') {
+ document.getElementById('city-error').classList.add('show');
+ hasErrors = true;
+ }
+
+ // Validate State
+ if (document.getElementById('State').value === '') {
+ document.getElementById('state-error').classList.add('show');
+ hasErrors = true;
+ }
+
+ // Validate Zip
+ if (document.getElementById('Zip').value.trim() === '') {
+ document.getElementById('zip-error').classList.add('show');
+ hasErrors = true;
+ }
+
+ // Validate Medications
+ if (!document.querySelector('input[name="Medications"]:checked')) {
+ document.getElementById('medications-error').classList.add('show');
+ hasErrors = true;
+ }
+
+ // Prevent form submission if there are errors
+ if (hasErrors) {
+ e.preventDefault();
+ }
+});
+</script>
 
 </body>
 </html>
