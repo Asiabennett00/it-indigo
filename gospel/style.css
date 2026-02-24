@@ -1,0 +1,133 @@
+
+
+body{
+  font-family: 'Lato', sans-serif;
+  margin:0;
+  background:white
+  color:#333;
+  line-height:1.6;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+/* Header */
+
+header.primary{
+  background-color:darkred;
+  color:white;
+  padding: 10px;
+  text-align: center;
+}
+
+header.primary h1 a{
+  color:white;
+  text-decoration:none;
+  text-align:center;
+}
+
+header.primary h2{
+  font-weight:300;
+  margin-top:5px;
+}
+
+
+/* Navigation */
+
+nav ul{
+  list-style:none;
+  padding:0;
+  margin-top:15px;
+}
+
+nav li{
+  display:inline-block;
+  margin:0 15px;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+nav a:hover{
+  text-decoration:underline;
+}
+
+
+/* Hero Section */
+
+.hero{
+background-image:url(https://images.unsplash.com/photo-1521106581851-da5b6457f674?q=80&w=1174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);center/cover no-repeat;
+  color:white;
+  padding:120px 20px;
+}
+
+.hero h2{
+  text-align: center;
+  font-size:48px;
+  margin-bottom:20px;
+}
+
+.hero p{
+  font-size:25px;
+  max-width:700px;
+  margin:auto;
+}
+
+
+/* Article Section */
+
+#articles{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  color: darkred;
+}
+
+.post{
+  background:white;
+  width:30%;
+  padding:15px;
+  margin-bottom:30px;
+  box-shadow:0 3px 8px rgba(0,0,0,0.1);
+}
+
+.post img{
+  width: 200px;
+}
+
+.post h2{
+  font-size:20px;
+  margin-top:10px;
+}
+
+
+/* Sidebar */
+
+aside{
+  background:#e9ecef;
+  padding:30px 0;
+}
+
+.widget{
+  margin-bottom:20px;
+}
+
+
+/* Footer */
+
+#colophon{
+  background:darkred;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+#colophon a{
+  color:white;
+}
