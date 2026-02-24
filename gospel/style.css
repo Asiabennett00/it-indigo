@@ -3,7 +3,7 @@
 body{
   font-family: 'Lato', sans-serif;
   margin:0;
-  background:white
+  background:white;
   color:#333;
   line-height:1.6;
 }
@@ -12,12 +12,14 @@ body{
   max-width:1100px;
   margin:auto;
   padding:40px 20px;
+    font-family: "Merriweather", serif;
+  font-optical-sizing: auto;
 }
 
 /* Header */
 
 header.primary{
-  background-color:darkred;
+  background-color:saddlebrown;
   color:white;
   padding: 10px;
   text-align: center;
@@ -27,6 +29,7 @@ header.primary h1 a{
   color:white;
   text-decoration:none;
   text-align:center;
+  
 }
 
 header.primary h2{
@@ -62,21 +65,27 @@ nav a:hover{
 /* Hero Section */
 
 .hero{
-background-image:url(https://images.unsplash.com/photo-1521106581851-da5b6457f674?q=80&w=1174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);center;
+background-image: url(https://images.unsplash.com/photo-1560586738-6320184118ba?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D); 
+background-repeat:no-repeat; 
+background-size:cover;
+background-position:center;
   color:white;
-  padding:100px 20px;
+  padding:75px;
 }
 
 .hero h2{
   text-align: center;
   font-size:48px;
-  margin-bottom:40px;
+  margin-bottom:auto;
 }
 
 .hero p{
   font-size:25px;
   max-width:750px;
-  margin:auto;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
 }
 
 
@@ -94,7 +103,7 @@ background-image:url(https://images.unsplash.com/photo-1521106581851-da5b6457f67
   width:30%;
   padding:15px;
   margin-bottom:30px;
-  box-shadow:0 4px 8px rgba(0,0,0,0.1);
+  box-shadow:0 4px 8px rgba(0,0,0,0.2);
 }
 
 .post img{
@@ -110,7 +119,7 @@ background-image:url(https://images.unsplash.com/photo-1521106581851-da5b6457f67
 /* Sidebar */
 
 aside{
-  background:#e9ecef;
+  background:white;
   padding:30px 0;
 }
 
@@ -122,7 +131,7 @@ aside{
 /* Footer */
 
 #colophon{
-  background:darkred;
+  background:saddlebrown;
   color:white;
   text-align:center;
   padding:20px;
