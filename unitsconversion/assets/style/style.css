@@ -1,0 +1,66 @@
+body {
+    font-family: "Times New Roman", Times, serif;
+    background-color: white;
+}
+
+.container {
+    width: 900px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 25px;
+}
+
+h1 {
+    color: #7a4e1d;
+    margin-bottom: 5px;
+}
+
+h1::after {
+    content: "";
+    display: block;
+    height: 3px;
+    background: #c9a15b;
+    margin-top: 6px;
+}
+
+fieldset {
+    border: 1px solid #999;
+    padding: 20px;
+}
+
+legend {
+    font-weight: bold;
+}
+
+.form-row {
+    margin-bottom: 12px;
+}
+
+label {
+    display: inline-block;
+    width: 110px;
+    vertical-align: top;
+}
+
+.units {
+    font-size: 14px;
+}
+
+.units input {
+    margin-left: 8px;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+input[type="text"] {
+    width: 180px;
+}
+
+button {
+    padding: 4px 10px;
+    margin-right: 5px;
+}
