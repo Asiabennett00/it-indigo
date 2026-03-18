@@ -1,0 +1,48 @@
+<h1>Currency Value History</h1>
+
+<form id="forexForm">
+
+<label>Base Currency:</label>
+<select id="baseCurrency">
+<option value="">Select a Currency...</option>
+<option value="USD">US Dollar</option>
+<option value="GBP">Great Britain Pound</option>
+<option value="EUR">Euro</option>
+<option value="JPY">Japanese Yen</option>
+<option value="CAD">Canadian Dollar</option>
+</select>
+<span id="baseError" class="error"></span>
+
+<br>
+
+<label>Convert to Currency:</label>
+<select id="targetCurrency">
+<option value="">Select a Currency...</option>
+<option value="USD">US Dollar</option>
+<option value="GBP">Great Britain Pound</option>
+<option value="EUR">Euro</option>
+<option value="JPY">Japanese Yen</option>
+<option value="CAD">Canadian Dollar</option>
+</select>
+<span id="targetError" class="error"></span>
+
+<br>
+
+<label>From Date:</label>
+<input type="date" id="fromDate">
+<span id="fromError" class="error"></span>
+
+<br>
+
+<label>To Date:</label>
+<input type="date" id="toDate">
+<span id="toError" class="error"></span>
+
+<br>
+
+<button type="button" onclick="getForex()">Show Results</button>
+<button type="button" onclick="clearForm()">Clear</button>
+
+</form>
+
+<canvas id="chartCanvas"></canvas>

@@ -3,8 +3,8 @@
 body{
   font-family: 'Lato', sans-serif;
   margin:0;
-  background:white;
-  color:#333;
+  background:#f8f6f2;
+  color:#2f2f2f;
   line-height:1.6;
 }
 
@@ -18,9 +18,9 @@ body{
 
 /* Header */
 
-header.primary{
-  background-color:saddlebrown;
-  color:white;
+header.primary,
+#colophon{
+  background:#5a3e2b;
   padding: 10px;
   text-align: center;
 }
@@ -58,6 +58,7 @@ nav a{
 }
 
 nav a:hover{
+  color:#f0d7b8;
   text-decoration:underline;
 }
 
@@ -95,7 +96,7 @@ background-position:center;
   display:flex;
   justify-content:space-between;
   flex-wrap:wrap;
-  color: darkred;
+  color: black;
 }
 
 .post{
@@ -107,7 +108,8 @@ background-position:center;
 }
 
 .post img{
-  width: 250px;
+  width: 100%;
+  height: auto;
 }
 
 .post h2{
@@ -131,7 +133,7 @@ aside{
 /* Footer */
 
 #colophon{
-  background:saddlebrown;
+  background:#5a3e2b;
   color:white;
   text-align:center;
   padding:20px;
