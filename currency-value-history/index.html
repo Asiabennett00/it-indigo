@@ -1,48 +1,73 @@
-<h1>Currency Value History</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Currency Value History</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Currency Value History</h1>
 
-<form id="forexForm">
+    <form id="currencyForm" novalidate>
+      <div class="form-row">
+        <label for="baseCurrency">Base Currency:</label>
+        <select id="baseCurrency">
+          <option value="">Select a Currency...</option>
+          <option value="USD">US Dollar</option>
+          <option value="GBP">Great Britain Pound</option>
+          <option value="EUR">Euro</option>
+          <option value="JPY">Japanese Yen</option>
+          <option value="CAD">Canadian Dollar</option>
+        </select>
+        <span class="error" id="baseCurrencyError"></span>
+      </div>
 
-<label>Base Currency:</label>
-<select id="baseCurrency">
-<option value="">Select a Currency...</option>
-<option value="USD">US Dollar</option>
-<option value="GBP">Great Britain Pound</option>
-<option value="EUR">Euro</option>
-<option value="JPY">Japanese Yen</option>
-<option value="CAD">Canadian Dollar</option>
-</select>
-<span id="baseError" class="error"></span>
+      <div class="form-row">
+        <label for="toCurrency">Convert to Currency:</label>
+        <select id="toCurrency">
+          <option value="">Select a Currency...</option>
+          <option value="USD">US Dollar</option>
+          <option value="GBP">Great Britain Pound</option>
+          <option value="EUR">Euro</option>
+          <option value="JPY">Japanese Yen</option>
+          <option value="CAD">Canadian Dollar</option>
+        </select>
+        <span class="error" id="toCurrencyError"></span>
+      </div>
 
-<br>
+      <div class="form-row">
+        <label for="fromDate">From Date:</label>
+        <input type="date" id="fromDate" />
+        <span class="error" id="fromDateError"></span>
+      </div>
 
-<label>Convert to Currency:</label>
-<select id="targetCurrency">
-<option value="">Select a Currency...</option>
-<option value="USD">US Dollar</option>
-<option value="GBP">Great Britain Pound</option>
-<option value="EUR">Euro</option>
-<option value="JPY">Japanese Yen</option>
-<option value="CAD">Canadian Dollar</option>
-</select>
-<span id="targetError" class="error"></span>
+      <div class="form-row">
+        <label for="toDate">To Date:</label>
+        <input type="date" id="toDate" />
+        <span class="error" id="toDateError"></span>
+      </div>
 
-<br>
+      <div class="button-row">
+        <button type="submit" id="showResultsBtn">Show Results</button>
+        <button type="button" id="clearBtn">Clear</button>
+      </div>
+    </form>
 
-<label>From Date:</label>
-<input type="date" id="fromDate">
-<span id="fromError" class="error"></span>
+    <div id="generalError" class="general-error"></div>
 
-<br>
+    <hr />
 
-<label>To Date:</label>
-<input type="date" id="toDate">
-<span id="toError" class="error"></span>
+   <section id="resultsSection">
+      <h2 id="chartHeading">Currency Value History</h2>
+      <canvas id="currencyChart"></canvas>
+    </section>
+  </div>
 
-<br>
-
-<button type="button" onclick="getForex()">Show Results</button>
-<button type="button" onclick="clearForm()">Clear</button>
-
-</form>
-
-<canvas id="chartCanvas"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

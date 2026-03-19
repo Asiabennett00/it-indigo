@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redeemed | Contact</title>
+  <meta name="description" content="Contact Redeemed, explore local weather forecasting with Open-Meteo, and connect through the website contact form.">
+  <meta name="keywords" content="contact, Christian website, weather forecast, Open-Meteo, email, Wufoo">
+  <meta name="author" content="Asia Bennett">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="branding">
+        <a href="index.html" class="site-logo">REDEEMED</a>
+        <p class="site-tagline">Grace, truth, and hope in Jesus Christ</p>
+      </div>
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="testimony.html">Testimony</a></li>
+          <li><a href="faith.html">Christianity</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-banner">
+      <div class="container">
+        <p class="eyebrow">Get in Touch</p>
+        <h1>Contact and Local Forecast</h1>
+        <p class="banner-text">
+          Reach out by email, use your contact form, or search a location to view a 7-day weather forecast.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container two-column">
+        <div class="card">
+          <h2>Contact information</h2>
+          <p>
+            Thank you for visiting Redeemed. If you have questions, encouragement to share, or feedback about
+            the site, please use the email link below or complete the contact form.
+          </p>
+          <p><strong>Email:</strong> <a class="text-link" href="mailto:asiabennett@example.com">asiabennett@example.com</a></p>
+          <p><strong>External resource:</strong> <a class="text-link" href="https://www.bible.com/" target="_blank" rel="noopener noreferrer">Bible.com</a></p>
+        </div>
+
+        <div class="card">
+          <h2>Wufoo contact form</h2>
+          <p>
+            After you create your form in Wufoo, paste the integrated form code into the space below.
+          </p>
+
+          <div class="form-placeholder">
+            <p>Paste your Wufoo embedded form code here.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt-section">
+      <div class="container">
+        <div class="card weather-card">
+          <h2>7-Day Temperature Forecast</h2>
+          <p class="weather-intro">
+            Enter any location. The page uses Open-Meteo geocoding to find the first match, then displays
+            a 7-day forecast using temperature at 2 meters above ground in Fahrenheit.
+          </p>
+
+          <form id="weather-form" class="weather-form" novalidate>
+            <label for="location">Location</label>
+            <div class="weather-controls">
+              <input type="text" id="location" name="location" placeholder="Enter a city or town" value="Little Rock">
+              <button type="submit" class="button">Get Forecast</button>
+            </div>
+            <p id="weather-error" class="error-message" aria-live="polite"></p>
+          </form>
+
+          <div id="location-details" class="location-details"></div>
+
+          <div class="table-wrap">
+            <table id="forecast-table">
+              <caption>7-Day Temperature Forecast</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Temperature (°F)</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="chart-wrap">
+            <canvas id="forecastChart" aria-label="Line chart of 7-day temperatures"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h2 class="footer-heading">Redeemed</h2>
+        <p>
+          A student website focused on Christian testimony, biblical truth, and encouragement for those
+          seeking hope in Jesus Christ.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="footer-heading">Quick Links</h2>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="testimony.html">Testimony</a></li>
+          <li><a href="faith.html">Christianity</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="footer-heading">Connect</h2>
+        <ul class="footer-links">
+          <li><a href="mailto:asiabennett@example.com">asiabennett@example.com</a></li>
+          <li><a href="https://www.bible.com/" target="_blank" rel="noopener noreferrer">Visit Bible.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Asia Bennett. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="assets/js/weather.js"></script>
+</body>
+</html>
