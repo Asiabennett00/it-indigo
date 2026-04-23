@@ -55,14 +55,40 @@
         </div>
 
         <div class="card">
-          <h2>Wufoo contact form</h2>
-          <p>
-            After you create your form in Wufoo, paste the integrated form code into the space below.
-          </p>
+<div class="form-placeholder">
+  <div id="wufoo-zr8bnsh0hk4gvl">
+    Fill out my
+    <a href="https://asiabennett06.wufoo.com/forms/zr8bnsh0hk4gvl">online form</a>.
+  </div>
 
-          <div class="form-placeholder">
-            <p>Paste your Wufoo embedded form code here.</p>
-          </div>
+  <script type="text/javascript">
+    var zr8bnsh0hk4gvl;
+    (function(d, t) {
+      var s = d.createElement(t), options = {
+        userName: 'asiabennett06',
+        formHash: 'zr8bnsh0hk4gvl',
+        autoResize: true,
+        height: '581',
+        async: true,
+        host: 'wufoo.com',
+        header: 'show',
+        ssl: true
+      };
+      s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'secure.wufoo.com/scripts/embed/form.js';
+      s.onload = s.onreadystatechange = function() {
+        var rs = this.readyState;
+        if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+        try {
+          zr8bnsh0hk4gvl = new WufooForm();
+          zr8bnsh0hk4gvl.initialize(options);
+          zr8bnsh0hk4gvl.display();
+        } catch (e) {}
+      };
+      var scr = d.getElementsByTagName(t)[0], par = scr.parentNode;
+      par.insertBefore(s, scr);
+    })(document, 'script');
+  </script>
+</div>
         </div>
       </div>
     </section>

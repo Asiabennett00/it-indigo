@@ -1,165 +1,118 @@
 $(document).ready(function () {
-  const apiKey = "7d40d5ac0-f600-4dd1-b05c-a706fa6c1ac1";
+  "use strict";
+
   let currencyChart = null;
 
-  function clearErrors() {
-    $("#baseCurrencyError").text("");
-    $("#toCurrencyError").text("");
-    $("#fromDateError").text("");
-    $("#toDateError").text("");
-    $("#generalError").text("");
+  // Set up jQuery Validate
+  $("#currencyForm").validate({
+    rules: {
+      baseCurrency: { required: true },
+      toCurrency: { required: true },
+      fromDate: { required: true },
+      toDate: { required: true }
+    },
+    messages: {
+      baseCurrency: "Base Currency is Required",
+      toCurrency:   "Convert To Currency is Required",
+      fromDate:     "From Date is Required",
+      toDate:       "To Date is Required"
+    },
+    errorPlacement: function (error, element) {
+      $("#" + element.attr("id") + "Error").html(error);
+    },
+    submitHandler: function () {
+      showCurrencyChart();
+    }
+  });
+
+  async function showCurrencyChart() {
+    clearErrors();
+    destroyChart();
+
+    const fromCurr = $("#baseCurrency").val();
+    const toCurr   = $("#toCurrency").val();
+    const FromDate = $("#fromDate").val();
+    const ToDate   = $("#toDate").val();
+    const apiKey   = "tBxBFlmKAGUDpvs8qVdIsDHDTlrnlBxg";
+
+    // Extra validation: same currency or bad date range
+    if (fromCurr === toCurr) {
+      $("#toCurrencyError").text("Currencies must be different");
+      return;
+    }
+    if (FromDate > ToDate) {
+      $("#toDateError").text("To Date must be after From Date");
+      return;
+    }
+
+    const forexTicker = "C:" + fromCurr + toCurr;
+    const myURL = `https://api.polygon.io/v2/aggs/ticker/${forexTicker}/range/1/day/${FromDate}/${ToDate}?adjusted=true&sort=asc&limit=5000&apiKey=${apiKey}`;
+
+    try {
+      const msgObject = await fetch(myURL);
+
+      if (msgObject.status >= 200 && msgObject.status <= 299) {
+        const msg = await msgObject.json();
+
+        const numDays = msg.results ? msg.results.length : 0;
+
+        if (numDays > 0) {
+          const currencyDate  = msg.results.map(r => new Date(r.t).toLocaleDateString());
+          const currencyValue = msg.results.map(r => r.c);
+
+          $("#chartHeading").text(`${fromCurr} to ${toCurr}`);
+
+          const canvas  = document.getElementById("currencyChart");
+          const context = canvas.getContext("2d");
+          context.clearRect(0, 0, canvas.width, canvas.height);
+
+          currencyChart = new Chart(canvas, {
+            type: "line",
+            data: {
+              labels: currencyDate,
+              datasets: [{
+                label: `${fromCurr} to ${toCurr}`,
+                data: currencyValue,
+                fill: false,
+                borderColor: "rgb(75, 192, 192)",
+                tension: 0.1
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: true
+            }
+          });
+
+        } else {
+          $("#generalError").text("No currency data found for that date range.");
+        }
+
+      } else {
+        $("#generalError").text("Currency data not found - Status: " + msgObject.status);
+      }
+
+    } catch (err) {
+      console.error(err);
+      $("#generalError").text("Network error - could not reach the API.");
+    }
   }
 
-  function clearChart() {
+  function destroyChart() {
     if (currencyChart) {
       currencyChart.destroy();
       currencyChart = null;
     }
   }
 
-  function validateForm() {
-    clearErrors();
-    let isValid = true;
-
-    const base = $("#baseCurrency").val();
-    const target = $("#toCurrency").val();
-    const from = $("#fromDate").val();
-    const to = $("#toDate").val();
-
-    if (!base) {
-      $("#baseCurrencyError").text("Base Currency is Required");
-      isValid = false;
-    }
-
-    if (!target) {
-      $("#toCurrencyError").text("Convert To Currency is Required");
-      isValid = false;
-    }
-
-    if (!from) {
-      $("#fromDateError").text("From Date is Required");
-      isValid = false;
-    }
-
-    if (!to) {
-      $("#toDateError").text("To Date is Required");
-      isValid = false;
-    }
-
-    if (from && to && from > to) {
-      $("#toDateError").text("To Date must be after From Date");
-      isValid = false;
-    }
-
-    if (base && target && base === target) {
-      $("#toCurrencyError").text("Currencies must be different");
-      isValid = false;
-    }
-
-    return isValid;
+  function clearErrors() {
+    $("#baseCurrencyError, #toCurrencyError, #fromDateError, #toDateError, #generalError").text("");
   }
-
-  function renderChart(labels, values, base, target) {
-    const ctx = document.getElementById("currencyChart").getContext("2d");
-
-    currencyChart = new Chart(ctx, {
-      type: "line",
-      data: {
-        labels: labels,
-        datasets: [
-          {
-            label: `One ${base} to ${target}`,
-            data: values,
-            borderColor: "#56c7c9",
-            backgroundColor: "#56c7c9",
-            fill: false,
-            tension: 0.2,
-            borderWidth: 3,
-            pointRadius: 4
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            display: true
-          }
-        },
-        scales: {
-          y: {
-            title: {
-              display: true,
-              text: target
-            }
-          }
-        }
-      }
-    });
-  }
-
-  function getCurrencyHistory() {
-    if (!validateForm()) {
-      clearChart();
-      $("#chartHeading").text("Currency Value History");
-      return;
-    }
-
-    clearErrors();
-    clearChart();
-
-    const base = $("#baseCurrency").val();
-    const target = $("#toCurrency").val();
-    const start = $("#fromDate").val();
-    const end = $("#toDate").val();
-
-    $("#chartHeading").text(`${base} to ${target}`);
-
-    const url = `https://api.polygon.io/v2/aggs/ticker/C:${base}${target}/range/1/day/${start}/${end}?adjusted=true&sort=asc&apiKey=${apiKey}`;
-
-    $.ajax({
-      url: url,
-      method: "GET",
-      dataType: "json",
-      success: function (data) {
-        console.log("API response:", data);
-
-        if (!data.results || data.results.length === 0) {
-          $("#generalError").text("No results found for selected dates.");
-          return;
-        }
-
-        const labels = data.results.map(item => {
-          const d = new Date(item.t);
-          return `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`;
-        });
-
-        const values = data.results.map(item => item.c);
-
-        renderChart(labels, values, base, target);
-      },
-      error: function (xhr, status, error) {
-        console.log("Status:", xhr.status);
-        console.log("Error:", error);
-        console.log("Response:", xhr.responseText);
-        $("#generalError").text("Error fetching data from Massive API.");
-      }
-    });
-  }
-
-  function clearForm() {
-    $("#currencyForm")[0].reset();
-    clearErrors();
-    clearChart();
-    $("#chartHeading").text("Currency Value History");
-  }
-
-  $("#currencyForm").on("submit", function (e) {
-    e.preventDefault();
-    getCurrencyHistory();
-  });
 
   $("#clearBtn").on("click", function () {
-    clearForm();
+    $("#currencyForm")[0].reset();
+    clearErrors();
+    destroyChart();
+    $("#chartHeading").text("Currency Value History");
   });
 });

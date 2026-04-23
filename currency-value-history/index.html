@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Currency Value History</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="container">
@@ -40,18 +39,18 @@
 
       <div class="form-row">
         <label for="fromDate">From Date:</label>
-        <input type="date" id="fromDate" />
+        <input type="date" name="fromDate" id="fromDate" />
         <span class="error" id="fromDateError"></span>
       </div>
 
       <div class="form-row">
         <label for="toDate">To Date:</label>
-        <input type="date" id="toDate" />
+        <input type="date" name="toDate" id="toDate" />
         <span class="error" id="toDateError"></span>
       </div>
 
       <div class="button-row">
-        <button type="submit" id="showResultsBtn">Show Results</button>
+        <input type="submit" value="showResults" id="showResults" name="showResults" onclick="showCurrencyChart();">
         <button type="button" id="clearBtn">Clear</button>
       </div>
     </form>
@@ -66,8 +65,10 @@
     </section>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
